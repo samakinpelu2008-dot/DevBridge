@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DevBridge - Client Dashboard</title>
+  <title>DevBridge - Developer Dashboard</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -45,25 +45,12 @@
 
     .main h1 { font-size:32px; margin-bottom:30px; color:var(--green); }
 
-    /* POST PROJECT BUTTON */
-    .post-btn {
-      padding:15px 30px;
-      background: var(--green);
-      color: var(--dark);
-      font-weight:700;
-      border:none;
-      border-radius:8px;
-      cursor:pointer;
-      transition:0.3s;
-      margin-bottom:40px;
-    }
-    .post-btn:hover { background:#16A34A; }
-
     /* PROJECT CARDS */
     .projects {
       display:grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap:30px;
+      margin-bottom:50px;
     }
     .project-card {
       background: var(--light-gray);
@@ -79,13 +66,37 @@
     .project-card button { margin-top:15px; padding:10px 20px; background:var(--blue); color:var(--white); border:none; border-radius:6px; cursor:pointer; transition:0.3s; }
     .project-card button:hover { background:var(--green); color:var(--dark); }
 
+    /* PORTFOLIO SECTION */
+    .portfolio {
+      margin-bottom:50px;
+    }
+    .portfolio h2 { color:var(--green); margin-bottom:20px; }
+    .portfolio-cards {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap:20px;
+    }
+    .portfolio-card {
+      background: var(--gray);
+      padding:20px;
+      border-radius:10px;
+      text-align:center;
+      transition:0.3s;
+    }
+    .portfolio-card:hover { transform: translateY(-5px); box-shadow:0 10px 20px rgba(34,197,94,0.3); }
+    .portfolio-card img { width:100%; border-radius:8px; margin-bottom:10px; }
+
+    /* RATINGS */
+    .rating-level { margin-bottom:50px; }
+    .rating-level span { font-weight:700; color:var(--green); margin-right:15px; }
+
     /* RESPONSIVE */
     @media(max-width:900px) {
       body { flex-direction:column; }
       .sidebar { width:100%; flex-direction:row; overflow-x:auto; padding:15px; gap:10px; }
       .sidebar h2 { display:none; }
       .main { padding:20px; }
-      .projects { grid-template-columns: 1fr; }
+      .projects, .portfolio-cards { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -94,46 +105,86 @@
   <!-- SIDEBAR -->
   <div class="sidebar">
     <h2>Dashboard</h2>
-    <a href="#">My Projects</a>
-    <a href="#">Bids</a>
-    <a href="#">Messages</a>
+    <a href="#">Available Projects</a>
+    <a href="#">My Bids</a>
+    <a href="#">Assigned Projects</a>
+    <a href="#">Portfolio</a>
     <a href="#">Profile</a>
     <a href="#">Logout</a>
   </div>
 
   <!-- MAIN DASHBOARD -->
   <div class="main">
-    <h1>Welcome, John!</h1>
-    <button class="post-btn">Post New Project</button>
+    <h1>Welcome, Jane!</h1>
 
+    <!-- Ratings & Level -->
+    <div class="rating-level">
+      <span>Level: Intermediate</span>
+      <span>Rating: ⭐⭐⭐⭐</span>
+    </div>
+
+    <!-- Available Projects -->
+    <h2>Available Projects to Bid On</h2>
     <div class="projects">
       <div class="project-card">
-        <h3>Build a Portfolio Website</h3>
-        <p>Budget: $300</p>
-        <p>Developer: Not yet assigned</p>
-        <p>Bids: 5</p>
+        <h3>Company Website</h3>
+        <p>Budget: $400</p>
+        <p>Client: John</p>
+        <p>Bids: 3</p>
         <span class="status">Status: Open</span>
-        <button>View Details</button>
+        <button>Place Bid</button>
       </div>
 
+      <div class="project-card">
+        <h3>React Dashboard</h3>
+        <p>Budget: $600</p>
+        <p>Client: Sarah</p>
+        <p>Bids: 5</p>
+        <span class="status">Status: Open</span>
+        <button>Place Bid</button>
+      </div>
+
+      <div class="project-card">
+        <h3>Mobile App Design</h3>
+        <p>Budget: $350</p>
+        <p>Client: Michael</p>
+        <p>Bids: 2</p>
+        <span class="status">Status: Open</span>
+        <button>Place Bid</button>
+      </div>
+    </div>
+
+    <!-- Assigned Projects -->
+    <h2>Assigned Projects</h2>
+    <div class="projects">
       <div class="project-card">
         <h3>E-commerce Platform</h3>
         <p>Budget: $800</p>
-        <p>Developer: Sarah</p>
-        <p>Bids: 2</p>
+        <p>Client: Sarah</p>
         <span class="status">Status: In Progress</span>
         <button>View Details</button>
       </div>
+    </div>
 
-      <div class="project-card">
-        <h3>Mobile App UI Design</h3>
-        <p>Budget: $500</p>
-        <p>Developer: Michael</p>
-        <p>Bids: 3</p>
-        <span class="status">Status: Completed</span>
-        <button>View Details</button>
+    <!-- Portfolio -->
+    <div class="portfolio">
+      <h2>Portfolio</h2>
+      <div class="portfolio-cards">
+        <div class="portfolio-card">
+          <img src="https://via.placeholder.com/200x120" alt="Portfolio 1">
+          <p>Portfolio Project 1</p>
+        </div>
+        <div class="portfolio-card">
+          <img src="https://via.placeholder.com/200x120" alt="Portfolio 2">
+          <p>Portfolio Project 2</p>
+        </div>
+        <div class="portfolio-card">
+          <img src="https://via.placeholder.com/200x120" alt="Portfolio 3">
+          <p>Portfolio Project 3</p>
+        </div>
       </div>
     </div>
+
   </div>
 
 </body>
