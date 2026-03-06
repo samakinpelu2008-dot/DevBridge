@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevBridge - Connect with Top Developers</title>
+  <style>
+    /* ====== COLORS ====== */
+    :root {
+      --blue: #2563EB;
+      --dark: #0F172A;
+      --green: #22C55E;
+      --white: #F8FAFC;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--dark);
+      color: var(--white);
+    }
+
+    a {
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    /* ====== NAVBAR ====== */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: var(--blue);
+    }
+
+    nav .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      font-weight: 500;
+      transition: 0.2s;
+    }
+
+    nav ul li a:hover {
+      color: var(--green);
+    }
+
+    /* ====== HERO SECTION ====== */
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background: linear-gradient(90deg, var(--blue) 0%, var(--dark) 100%);
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    .hero button {
+      padding: 15px 30px;
+      background-color: var(--green);
+      border: none;
+      color: var(--dark);
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: 0.2s;
+    }
+
+    .hero button:hover {
+      background-color: #16A34A;
+    }
+
+    /* ====== FEATURED DEVELOPERS ====== */
+    .section {
+      padding: 80px 50px;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 36px;
+      margin-bottom: 50px;
+      color: var(--green);
+    }
+
+    .developers {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .developer-card {
+      background-color: #1E293B;
+      padding: 20px;
+      border-radius: 10px;
+      width: 250px;
+      transition: 0.3s;
+    }
+
+    .developer-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(34,197,94,0.5);
+    }
+
+    .developer-card img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+    }
+
+    .developer-card h3 {
+      margin: 10px 0 5px 0;
+    }
+
+    .developer-card p {
+      font-size: 14px;
+      color: #CBD5E1;
+    }
+
+    .developer-card .rating {
+      color: var(--green);
+      margin-top: 10px;
+    }
+
+    /* ====== HOW IT WORKS ====== */
+    .how-it-works {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 50px;
+      margin-top: 50px;
+    }
+
+    .step {
+      background-color: #1E293B;
+      padding: 30px;
+      border-radius: 10px;
+      width: 250px;
+      transition: 0.3s;
+    }
+
+    .step h4 {
+      color: var(--green);
+      margin-bottom: 15px;
+    }
+
+    /* ====== FOOTER ====== */
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background-color: var(--blue);
+      margin-top: 50px;
+    }
+
+    @media(max-width:768px) {
+      .developers, .how-it-works {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">DevBridge</div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Developers</a></li>
+      <li><a href="#">Post Project</a></li>
+      <li><a href="#">Login / Register</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Connect with Top Developers</h1>
+    <p>Get your project done fast, secure, and with the best developers available.</p>
+    <button>Post a Project</button>
+  </section>
+
+  <!-- FEATURED DEVELOPERS -->
+  <section class="section">
+    <h2>Featured Developers</h2>
+    <div class="developers">
+      <div class="developer-card">
+        <img src="https://i.pravatar.cc/80?img=1" alt="Dev 1">
+        <h3>Daniel</h3>
+        <p>HTML, CSS, React</p>
+        <div class="rating">⭐⭐⭐⭐⭐</div>
+      </div>
+      <div class="developer-card">
+        <img src="https://i.pravatar.cc/80?img=2" alt="Dev 2">
+        <h3>Sarah</h3>
+        <p>Node.js, Firebase</p>
+        <div class="rating">⭐⭐⭐⭐</div>
+      </div>
+      <div class="developer-card">
+        <img src="https://i.pravatar.cc/80?img=3" alt="Dev 3">
+        <h3>Michael</h3>
+        <p>React, Tailwind</p>
+        <div class="rating">⭐⭐⭐⭐⭐</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section">
+    <h2>How It Works</h2>
+    <div class="how-it-works">
+      <div class="step">
+        <h4>1. Post a Project</h4>
+        <p>Describe your project and set your budget. Developers will see it immediately.</p>
+      </div>
+      <div class="step">
+        <h4>2. Hire or Get Bids</h4>
+        <p>Choose a developer directly or let developers bid for your project.</p>
+      </div>
+      <div class="step">
+        <h4>3. Secure Payment & Chat</h4>
+        <p>Payment is held securely, chat unlocks only after hiring for safe collaboration.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; 2026 DevBridge. All rights reserved.
+  </footer>
+
+</body>
+</html>
