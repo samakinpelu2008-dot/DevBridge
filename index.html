@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DevBridge - Register</title>
+  <title>DevBridge - Client Dashboard</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -14,206 +14,127 @@
       --light-gray: #334155;
       --white: #F8FAFC;
     }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:'Inter', sans-serif; background:var(--dark); color:var(--white); display:flex; min-height:100vh; }
 
-    * { box-sizing: border-box; margin:0; padding:0; }
-    body { font-family: 'Inter', sans-serif; background: var(--dark); color: var(--white); }
-
-    a { text-decoration:none; color:inherit; }
-
-    /* NAVBAR */
-    nav {
-      display:flex; justify-content:space-between; align-items:center;
-      padding:20px 50px; background: var(--blue);
-    }
-    nav .logo { font-weight:700; font-size:28px; letter-spacing:1px; }
-
-    /* CONTAINER */
-    .container {
-      max-width: 900px;
-      margin: 60px auto;
-      padding: 0 20px;
-    }
-
-    /* USER TYPE SELECTION */
-    .user-type {
-      display:flex;
-      justify-content:center;
-      gap:40px;
-      margin-bottom:50px;
-      flex-wrap: wrap;
-    }
-    .user-type button {
-      padding: 20px 50px;
-      font-size: 18px;
-      font-weight:700;
-      border-radius:8px;
-      border:none;
-      cursor:pointer;
-      transition:0.3s;
-      background: var(--gray);
-      color: var(--white);
-    }
-    .user-type button:hover, .user-type button.active {
-      background: var(--green);
-      color: var(--dark);
-    }
-
-    /* FORMS */
-    form {
-      background: var(--light-gray);
-      padding:40px;
-      border-radius:12px;
-      display:none;
-      max-width: 500px;
-      margin: 0 auto;
-    }
-
-    form.active { display:block; }
-
-    form h2 {
-      text-align:center;
-      margin-bottom:30px;
-      color: var(--green);
-    }
-
-    form label {
-      display:block;
-      margin-bottom:8px;
-      font-weight:600;
-    }
-
-    form input, form select {
-      width:100%;
-      padding:12px 15px;
-      margin-bottom:20px;
-      border-radius:6px;
-      border:none;
-      background: var(--gray);
-      color: var(--white);
-      font-size:16px;
-    }
-
-    form input::placeholder { color: #CBD5E1; }
-
-    form button {
-      width:100%;
-      padding:15px;
-      background: var(--green);
-      color: var(--dark);
-      font-size:18px;
-      font-weight:700;
-      border:none;
-      border-radius:8px;
-      cursor:pointer;
-      transition:0.3s;
-    }
-
-    form button:hover {
-      background:#16A34A;
-    }
-
-    /* FOOTER */
-    footer {
-      text-align:center;
-      padding:30px 20px;
-      margin-top:60px;
+    /* SIDEBAR */
+    .sidebar {
+      width:220px;
       background: var(--blue);
-      font-size:14px;
+      display:flex;
+      flex-direction:column;
+      padding:30px 20px;
+      gap:20px;
     }
+    .sidebar h2 { color:var(--white); margin-bottom:20px; }
+    .sidebar a {
+      color:var(--white);
+      padding:10px;
+      border-radius:6px;
+      display:block;
+      transition:0.3s;
+    }
+    .sidebar a:hover { background: var(--green); color:var(--dark); }
+
+    /* MAIN DASHBOARD */
+    .main {
+      flex:1;
+      padding:40px;
+      overflow-y:auto;
+    }
+
+    .main h1 { font-size:32px; margin-bottom:30px; color:var(--green); }
+
+    /* POST PROJECT BUTTON */
+    .post-btn {
+      padding:15px 30px;
+      background: var(--green);
+      color: var(--dark);
+      font-weight:700;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+      transition:0.3s;
+      margin-bottom:40px;
+    }
+    .post-btn:hover { background:#16A34A; }
+
+    /* PROJECT CARDS */
+    .projects {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap:30px;
+    }
+    .project-card {
+      background: var(--light-gray);
+      padding:25px;
+      border-radius:12px;
+      transition:0.3s;
+    }
+    .project-card:hover { transform: translateY(-5px); box-shadow:0 10px 25px rgba(34,197,94,0.3); }
+
+    .project-card h3 { color:var(--green); margin-bottom:10px; }
+    .project-card p { color:#CBD5E1; margin-bottom:8px; font-size:14px; }
+    .project-card .status { font-weight:600; margin-top:10px; }
+    .project-card button { margin-top:15px; padding:10px 20px; background:var(--blue); color:var(--white); border:none; border-radius:6px; cursor:pointer; transition:0.3s; }
+    .project-card button:hover { background:var(--green); color:var(--dark); }
 
     /* RESPONSIVE */
-    @media(max-width:600px){
-      .user-type { flex-direction:column; gap:20px; }
+    @media(max-width:900px) {
+      body { flex-direction:column; }
+      .sidebar { width:100%; flex-direction:row; overflow-x:auto; padding:15px; gap:10px; }
+      .sidebar h2 { display:none; }
+      .main { padding:20px; }
+      .projects { grid-template-columns: 1fr; }
     }
-
   </style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <nav>
-    <div class="logo">DevBridge</div>
-  </nav>
-
-  <div class="container">
-    <!-- User Type Selection -->
-    <div class="user-type">
-      <button id="clientBtn" class="active">I am a Client</button>
-      <button id="devBtn">I am a Developer</button>
-    </div>
-
-    <!-- Client Registration Form -->
-    <form id="clientForm" class="active">
-      <h2>Client Registration</h2>
-      <label for="clientName">Full Name</label>
-      <input type="text" id="clientName" placeholder="John Doe">
-
-      <label for="clientEmail">Email</label>
-      <input type="email" id="clientEmail" placeholder="example@email.com">
-
-      <label for="clientPassword">Password</label>
-      <input type="password" id="clientPassword" placeholder="Enter password">
-
-      <label for="clientCompany">Company / Organization (Optional)</label>
-      <input type="text" id="clientCompany" placeholder="Company Name">
-
-      <button type="submit">Create Account</button>
-    </form>
-
-    <!-- Developer Registration Form -->
-    <form id="devForm">
-      <h2>Developer Registration</h2>
-      <label for="devName">Full Name</label>
-      <input type="text" id="devName" placeholder="Jane Smith">
-
-      <label for="devEmail">Email</label>
-      <input type="email" id="devEmail" placeholder="example@email.com">
-
-      <label for="devPassword">Password</label>
-      <input type="password" id="devPassword" placeholder="Enter password">
-
-      <label for="devSkills">Skills</label>
-      <input type="text" id="devSkills" placeholder="HTML, CSS, React...">
-
-      <label for="devPortfolio">Portfolio Link (Optional)</label>
-      <input type="url" id="devPortfolio" placeholder="https://portfolio.com">
-
-      <label for="devLevel">Level</label>
-      <select id="devLevel">
-        <option>Beginner</option>
-        <option>Intermediate</option>
-        <option>Elite</option>
-      </select>
-
-      <button type="submit">Create Account</button>
-    </form>
-
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <h2>Dashboard</h2>
+    <a href="#">My Projects</a>
+    <a href="#">Bids</a>
+    <a href="#">Messages</a>
+    <a href="#">Profile</a>
+    <a href="#">Logout</a>
   </div>
 
-  <footer>
-    &copy; 2026 DevBridge. All rights reserved.
-  </footer>
+  <!-- MAIN DASHBOARD -->
+  <div class="main">
+    <h1>Welcome, John!</h1>
+    <button class="post-btn">Post New Project</button>
 
-  <script>
-    const clientBtn = document.getElementById('clientBtn');
-    const devBtn = document.getElementById('devBtn');
-    const clientForm = document.getElementById('clientForm');
-    const devForm = document.getElementById('devForm');
+    <div class="projects">
+      <div class="project-card">
+        <h3>Build a Portfolio Website</h3>
+        <p>Budget: $300</p>
+        <p>Developer: Not yet assigned</p>
+        <p>Bids: 5</p>
+        <span class="status">Status: Open</span>
+        <button>View Details</button>
+      </div>
 
-    clientBtn.addEventListener('click', () => {
-      clientForm.classList.add('active');
-      devForm.classList.remove('active');
-      clientBtn.classList.add('active');
-      devBtn.classList.remove('active');
-    });
+      <div class="project-card">
+        <h3>E-commerce Platform</h3>
+        <p>Budget: $800</p>
+        <p>Developer: Sarah</p>
+        <p>Bids: 2</p>
+        <span class="status">Status: In Progress</span>
+        <button>View Details</button>
+      </div>
 
-    devBtn.addEventListener('click', () => {
-      devForm.classList.add('active');
-      clientForm.classList.remove('active');
-      devBtn.classList.add('active');
-      clientBtn.classList.remove('active');
-    });
-  </script>
+      <div class="project-card">
+        <h3>Mobile App UI Design</h3>
+        <p>Budget: $500</p>
+        <p>Developer: Michael</p>
+        <p>Bids: 3</p>
+        <span class="status">Status: Completed</span>
+        <button>View Details</button>
+      </div>
+    </div>
+  </div>
 
 </body>
-  </html>
+</html>
