@@ -11,18 +11,27 @@
       --dark: #0F172A;
       --green: #22C55E;
       --white: #F8FAFC;
+      --gray: #1E293B;
+      --light-gray: #334155;
+    }
+
+    /* ====== BASE ====== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background-color: var(--dark);
       color: var(--white);
+      line-height: 1.6;
     }
 
     a {
-      color: var(--white);
       text-decoration: none;
+      color: inherit;
     }
 
     /* ====== NAVBAR ====== */
@@ -30,12 +39,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 50px;
+      padding: 15px 50px;
       background-color: var(--blue);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
     nav .logo {
-      font-size: 24px;
+      font-size: 28px;
       font-weight: bold;
     }
 
@@ -54,32 +66,39 @@
       color: var(--green);
     }
 
-    /* ====== HERO SECTION ====== */
+    /* ====== HERO ====== */
     .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 100px 20px;
-      background: linear-gradient(90deg, var(--blue) 0%, var(--dark) 100%);
+      padding: 120px 20px;
+      background: linear-gradient(135deg, var(--blue), var(--dark));
     }
 
     .hero h1 {
-      font-size: 48px;
+      font-size: 52px;
       margin-bottom: 20px;
+      max-width: 900px;
     }
 
     .hero p {
-      font-size: 20px;
+      font-size: 22px;
       margin-bottom: 30px;
+      max-width: 700px;
+      color: #E2E8F0;
     }
 
     .hero button {
-      padding: 15px 30px;
+      padding: 18px 40px;
       background-color: var(--green);
       border: none;
       color: var(--dark);
-      font-size: 18px;
+      font-size: 20px;
       font-weight: bold;
       cursor: pointer;
-      border-radius: 5px;
+      border-radius: 6px;
       transition: 0.2s;
     }
 
@@ -87,47 +106,53 @@
       background-color: #16A34A;
     }
 
-    /* ====== FEATURED DEVELOPERS ====== */
+    /* ====== SECTIONS ====== */
     .section {
-      padding: 80px 50px;
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 20px;
       text-align: center;
     }
 
     .section h2 {
-      font-size: 36px;
-      margin-bottom: 50px;
+      font-size: 38px;
+      margin-bottom: 60px;
       color: var(--green);
     }
 
+    /* ====== FEATURED DEVELOPERS ====== */
     .developers {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 30px;
+      gap: 35px;
     }
 
     .developer-card {
-      background-color: #1E293B;
-      padding: 20px;
-      border-radius: 10px;
-      width: 250px;
+      background-color: var(--gray);
+      border-radius: 12px;
+      padding: 25px;
+      width: 260px;
+      text-align: center;
       transition: 0.3s;
     }
 
     .developer-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(34,197,94,0.5);
+      box-shadow: 0 8px 20px rgba(34,197,94,0.5);
     }
 
     .developer-card img {
-      width: 80px;
-      height: 80px;
+      width: 90px;
+      height: 90px;
       border-radius: 50%;
       margin-bottom: 15px;
+      border: 2px solid var(--green);
     }
 
     .developer-card h3 {
-      margin: 10px 0 5px 0;
+      margin: 12px 0 5px 0;
+      font-size: 20px;
     }
 
     .developer-card p {
@@ -138,6 +163,7 @@
     .developer-card .rating {
       color: var(--green);
       margin-top: 10px;
+      font-size: 16px;
     }
 
     /* ====== HOW IT WORKS ====== */
@@ -145,35 +171,52 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 50px;
-      margin-top: 50px;
+      gap: 40px;
     }
 
     .step {
-      background-color: #1E293B;
+      background-color: var(--light-gray);
       padding: 30px;
-      border-radius: 10px;
-      width: 250px;
+      border-radius: 12px;
+      width: 280px;
       transition: 0.3s;
+      text-align: left;
+    }
+
+    .step:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(34,197,94,0.3);
     }
 
     .step h4 {
       color: var(--green);
       margin-bottom: 15px;
+      font-size: 20px;
+    }
+
+    .step p {
+      font-size: 15px;
+      color: #E2E8F0;
     }
 
     /* ====== FOOTER ====== */
     footer {
       text-align: center;
-      padding: 30px 20px;
+      padding: 35px 20px;
       background-color: var(--blue);
-      margin-top: 50px;
+      margin-top: 60px;
+      font-size: 14px;
     }
 
-    @media(max-width:768px) {
+    @media(max-width: 768px) {
       .developers, .how-it-works {
         flex-direction: column;
         align-items: center;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 15px;
       }
     }
   </style>
@@ -193,8 +236,8 @@
 
   <!-- HERO -->
   <section class="hero">
-    <h1>Connect with Top Developers</h1>
-    <p>Get your project done fast, secure, and with the best developers available.</p>
+    <h1>Connect with Top Developers and Get Your Projects Done</h1>
+    <p>Hire expert developers or post your project to receive bids securely. Fast, professional, and reliable.</p>
     <button>Post a Project</button>
   </section>
 
@@ -203,19 +246,19 @@
     <h2>Featured Developers</h2>
     <div class="developers">
       <div class="developer-card">
-        <img src="https://i.pravatar.cc/80?img=1" alt="Dev 1">
+        <img src="https://i.pravatar.cc/90?img=1" alt="Dev 1">
         <h3>Daniel</h3>
         <p>HTML, CSS, React</p>
         <div class="rating">⭐⭐⭐⭐⭐</div>
       </div>
       <div class="developer-card">
-        <img src="https://i.pravatar.cc/80?img=2" alt="Dev 2">
+        <img src="https://i.pravatar.cc/90?img=2" alt="Dev 2">
         <h3>Sarah</h3>
         <p>Node.js, Firebase</p>
         <div class="rating">⭐⭐⭐⭐</div>
       </div>
       <div class="developer-card">
-        <img src="https://i.pravatar.cc/80?img=3" alt="Dev 3">
+        <img src="https://i.pravatar.cc/90?img=3" alt="Dev 3">
         <h3>Michael</h3>
         <p>React, Tailwind</p>
         <div class="rating">⭐⭐⭐⭐⭐</div>
@@ -229,15 +272,15 @@
     <div class="how-it-works">
       <div class="step">
         <h4>1. Post a Project</h4>
-        <p>Describe your project and set your budget. Developers will see it immediately.</p>
+        <p>Describe your project, set your budget, and post it. Developers will see it instantly.</p>
       </div>
       <div class="step">
-        <h4>2. Hire or Get Bids</h4>
-        <p>Choose a developer directly or let developers bid for your project.</p>
+        <h4>2. Hire or Receive Bids</h4>
+        <p>Choose a developer directly or let developers bid for your project to find the best fit.</p>
       </div>
       <div class="step">
         <h4>3. Secure Payment & Chat</h4>
-        <p>Payment is held securely, chat unlocks only after hiring for safe collaboration.</p>
+        <p>Payment is held safely, and chat unlocks after hiring so collaboration is secure.</p>
       </div>
     </div>
   </section>
