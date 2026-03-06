@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DevBridge - Developer Dashboard</title>
+  <title>DevBridge - Project Details</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -36,59 +36,67 @@
     }
     .sidebar a:hover { background: var(--green); color:var(--dark); }
 
-    /* MAIN DASHBOARD */
+    /* MAIN CONTENT */
     .main {
       flex:1;
       padding:40px;
       overflow-y:auto;
     }
 
-    .main h1 { font-size:32px; margin-bottom:30px; color:var(--green); }
+    .main h1 { font-size:32px; margin-bottom:20px; color:var(--green); }
 
-    /* PROJECT CARDS */
-    .projects {
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap:30px;
-      margin-bottom:50px;
-    }
-    .project-card {
+    /* PROJECT INFO */
+    .project-info {
       background: var(--light-gray);
-      padding:25px;
+      padding:30px;
       border-radius:12px;
-      transition:0.3s;
+      margin-bottom:40px;
     }
-    .project-card:hover { transform: translateY(-5px); box-shadow:0 10px 25px rgba(34,197,94,0.3); }
+    .project-info h2 { color:var(--green); margin-bottom:15px; }
+    .project-info p { margin-bottom:10px; color:#CBD5E1; }
+    .project-info span { font-weight:600; }
 
-    .project-card h3 { color:var(--green); margin-bottom:10px; }
-    .project-card p { color:#CBD5E1; margin-bottom:8px; font-size:14px; }
-    .project-card .status { font-weight:600; margin-top:10px; }
-    .project-card button { margin-top:15px; padding:10px 20px; background:var(--blue); color:var(--white); border:none; border-radius:6px; cursor:pointer; transition:0.3s; }
-    .project-card button:hover { background:var(--green); color:var(--dark); }
-
-    /* PORTFOLIO SECTION */
-    .portfolio {
-      margin-bottom:50px;
+    /* BIDS SECTION */
+    .bids-section {
+      margin-bottom:40px;
     }
-    .portfolio h2 { color:var(--green); margin-bottom:20px; }
-    .portfolio-cards {
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap:20px;
-    }
-    .portfolio-card {
+    .bids-section h3 { color:var(--green); margin-bottom:20px; }
+    .bid-card {
       background: var(--gray);
       padding:20px;
       border-radius:10px;
-      text-align:center;
+      margin-bottom:15px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
       transition:0.3s;
     }
-    .portfolio-card:hover { transform: translateY(-5px); box-shadow:0 10px 20px rgba(34,197,94,0.3); }
-    .portfolio-card img { width:100%; border-radius:8px; margin-bottom:10px; }
+    .bid-card:hover { transform: translateY(-3px); box-shadow:0 5px 15px rgba(34,197,94,0.3); }
+    .bid-card span { font-weight:600; }
+    .bid-card button {
+      padding:8px 15px;
+      background:var(--green);
+      color:var(--dark);
+      border:none;
+      border-radius:6px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+    .bid-card button:hover { background:#16A34A; }
 
-    /* RATINGS */
-    .rating-level { margin-bottom:50px; }
-    .rating-level span { font-weight:700; color:var(--green); margin-right:15px; }
+    /* ACTION BUTTONS */
+    .action-btn {
+      padding:15px 30px;
+      background: var(--green);
+      color: var(--dark);
+      font-weight:700;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+      transition:0.3s;
+      margin-top:20px;
+    }
+    .action-btn:hover { background:#16A34A; }
 
     /* RESPONSIVE */
     @media(max-width:900px) {
@@ -96,7 +104,6 @@
       .sidebar { width:100%; flex-direction:row; overflow-x:auto; padding:15px; gap:10px; }
       .sidebar h2 { display:none; }
       .main { padding:20px; }
-      .projects, .portfolio-cards { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -113,77 +120,40 @@
     <a href="#">Logout</a>
   </div>
 
-  <!-- MAIN DASHBOARD -->
+  <!-- MAIN CONTENT -->
   <div class="main">
-    <h1>Welcome, Jane!</h1>
+    <h1>Project Details</h1>
 
-    <!-- Ratings & Level -->
-    <div class="rating-level">
-      <span>Level: Intermediate</span>
-      <span>Rating: ⭐⭐⭐⭐</span>
+    <!-- PROJECT INFO -->
+    <div class="project-info">
+      <h2>Build a Portfolio Website</h2>
+      <p><span>Budget:</span> $300</p>
+      <p><span>Deadline:</span> 10 March 2026</p>
+      <p><span>Client:</span> John Doe</p>
+      <p><span>Skills Required:</span> HTML, CSS, JavaScript, React</p>
+      <p><span>Status:</span> Open</p>
+      <p><span>Description:</span> A portfolio website for showcasing my work as a designer. Must be responsive and modern. Include animations and light/dark mode.</p>
     </div>
 
-    <!-- Available Projects -->
-    <h2>Available Projects to Bid On</h2>
-    <div class="projects">
-      <div class="project-card">
-        <h3>Company Website</h3>
-        <p>Budget: $400</p>
-        <p>Client: John</p>
-        <p>Bids: 3</p>
-        <span class="status">Status: Open</span>
+    <!-- BIDS SECTION (for developers) -->
+    <div class="bids-section">
+      <h3>Bids</h3>
+      <div class="bid-card">
+        <span>Jane Doe - $280</span>
         <button>Place Bid</button>
       </div>
-
-      <div class="project-card">
-        <h3>React Dashboard</h3>
-        <p>Budget: $600</p>
-        <p>Client: Sarah</p>
-        <p>Bids: 5</p>
-        <span class="status">Status: Open</span>
+      <div class="bid-card">
+        <span>Michael Smith - $300</span>
         <button>Place Bid</button>
       </div>
-
-      <div class="project-card">
-        <h3>Mobile App Design</h3>
-        <p>Budget: $350</p>
-        <p>Client: Michael</p>
-        <p>Bids: 2</p>
-        <span class="status">Status: Open</span>
+      <div class="bid-card">
+        <span>Sarah Lee - $290</span>
         <button>Place Bid</button>
       </div>
     </div>
 
-    <!-- Assigned Projects -->
-    <h2>Assigned Projects</h2>
-    <div class="projects">
-      <div class="project-card">
-        <h3>E-commerce Platform</h3>
-        <p>Budget: $800</p>
-        <p>Client: Sarah</p>
-        <span class="status">Status: In Progress</span>
-        <button>View Details</button>
-      </div>
-    </div>
-
-    <!-- Portfolio -->
-    <div class="portfolio">
-      <h2>Portfolio</h2>
-      <div class="portfolio-cards">
-        <div class="portfolio-card">
-          <img src="https://via.placeholder.com/200x120" alt="Portfolio 1">
-          <p>Portfolio Project 1</p>
-        </div>
-        <div class="portfolio-card">
-          <img src="https://via.placeholder.com/200x120" alt="Portfolio 2">
-          <p>Portfolio Project 2</p>
-        </div>
-        <div class="portfolio-card">
-          <img src="https://via.placeholder.com/200x120" alt="Portfolio 3">
-          <p>Portfolio Project 3</p>
-        </div>
-      </div>
-    </div>
+    <!-- ACTION BUTTON (Client hires / Developer accepts) -->
+    <button class="action-btn">Hire Developer / Accept Project</button>
 
   </div>
 
