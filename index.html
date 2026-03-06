@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DevBridge - Connect with Top Developers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* ====== COLORS ====== */
     :root {
       --blue: #2563EB;
       --dark: #0F172A;
@@ -15,209 +15,54 @@
       --light-gray: #334155;
     }
 
-    /* ====== BASE ====== */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body { font-family: 'Inter', sans-serif; background: var(--dark); color: var(--white); line-height:1.6; }
+    a { text-decoration: none; color: inherit; }
 
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--dark);
-      color: var(--white);
-      line-height: 1.6;
-    }
+    /* NAVBAR */
+    nav { display:flex; justify-content: space-between; align-items:center; padding:20px 50px; background: var(--blue); position: sticky; top:0; z-index:100; }
+    nav .logo { font-weight:700; font-size:28px; letter-spacing:1px; }
+    nav ul { display:flex; list-style:none; gap:25px; }
+    nav ul li a { font-weight:600; transition:0.3s; }
+    nav ul li a:hover { color: var(--green); }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+    /* HERO */
+    .hero { display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:120px 20px; background: linear-gradient(135deg, #2563EB, #0F172A); }
+    .hero h1 { font-size: 56px; font-weight:700; max-width:900px; margin-bottom:20px; line-height:1.2; }
+    .hero p { font-size:22px; color:#E2E8F0; max-width:700px; margin-bottom:30px; }
+    .hero button { padding:18px 45px; font-size:20px; font-weight:700; border:none; border-radius:6px; background:var(--green); color:var(--dark); cursor:pointer; transition:0.3s; }
+    .hero button:hover { background:#16A34A; }
 
-    /* ====== NAVBAR ====== */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 50px;
-      background-color: var(--blue);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+    /* SECTIONS */
+    .section { max-width:1200px; margin:80px auto; padding:0 20px; text-align:center; }
+    .section h2 { font-size:38px; color:var(--green); margin-bottom:60px; }
 
-    nav .logo {
-      font-size: 28px;
-      font-weight: bold;
-    }
+    /* FEATURED DEVELOPERS */
+    .developers { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:35px; justify-items:center; }
+    .developer-card { background:var(--gray); border-radius:12px; padding:25px; transition:0.3s; text-align:center; }
+    .developer-card:hover { transform:translateY(-5px); box-shadow:0 10px 25px rgba(34,197,94,0.4); }
+    .developer-card img { width:90px; height:90px; border-radius:50%; margin-bottom:15px; border:2px solid var(--green); }
+    .developer-card h3 { margin:10px 0 5px; font-size:20px; }
+    .developer-card p { font-size:14px; color:#CBD5E1; }
+    .developer-card .rating { color:var(--green); margin-top:10px; font-size:16px; }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 25px;
-    }
+    /* HOW IT WORKS */
+    .how-it-works { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:40px; justify-items:center; }
+    .step { background:var(--light-gray); padding:30px; border-radius:12px; text-align:left; transition:0.3s; }
+    .step:hover { transform:translateY(-5px); box-shadow:0 5px 15px rgba(34,197,94,0.3); }
+    .step h4 { color:var(--green); margin-bottom:15px; font-size:20px; }
+    .step p { font-size:15px; color:#E2E8F0; }
 
-    nav ul li a {
-      font-weight: 500;
-      transition: 0.2s;
-    }
+    /* FOOTER */
+    footer { text-align:center; padding:40px 20px; background:var(--blue); font-size:14px; margin-top:60px; display:flex; flex-direction:column; gap:10px; }
+    footer a { color:var(--green); transition:0.3s; }
+    footer a:hover { text-decoration:underline; }
 
-    nav ul li a:hover {
-      color: var(--green);
-    }
-
-    /* ====== HERO ====== */
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 120px 20px;
-      background: linear-gradient(135deg, var(--blue), var(--dark));
-    }
-
-    .hero h1 {
-      font-size: 52px;
-      margin-bottom: 20px;
-      max-width: 900px;
-    }
-
-    .hero p {
-      font-size: 22px;
-      margin-bottom: 30px;
-      max-width: 700px;
-      color: #E2E8F0;
-    }
-
-    .hero button {
-      padding: 18px 40px;
-      background-color: var(--green);
-      border: none;
-      color: var(--dark);
-      font-size: 20px;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 6px;
-      transition: 0.2s;
-    }
-
-    .hero button:hover {
-      background-color: #16A34A;
-    }
-
-    /* ====== SECTIONS ====== */
-    .section {
-      max-width: 1200px;
-      margin: 80px auto;
-      padding: 0 20px;
-      text-align: center;
-    }
-
-    .section h2 {
-      font-size: 38px;
-      margin-bottom: 60px;
-      color: var(--green);
-    }
-
-    /* ====== FEATURED DEVELOPERS ====== */
-    .developers {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 35px;
-    }
-
-    .developer-card {
-      background-color: var(--gray);
-      border-radius: 12px;
-      padding: 25px;
-      width: 260px;
-      text-align: center;
-      transition: 0.3s;
-    }
-
-    .developer-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(34,197,94,0.5);
-    }
-
-    .developer-card img {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      margin-bottom: 15px;
-      border: 2px solid var(--green);
-    }
-
-    .developer-card h3 {
-      margin: 12px 0 5px 0;
-      font-size: 20px;
-    }
-
-    .developer-card p {
-      font-size: 14px;
-      color: #CBD5E1;
-    }
-
-    .developer-card .rating {
-      color: var(--green);
-      margin-top: 10px;
-      font-size: 16px;
-    }
-
-    /* ====== HOW IT WORKS ====== */
-    .how-it-works {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-    }
-
-    .step {
-      background-color: var(--light-gray);
-      padding: 30px;
-      border-radius: 12px;
-      width: 280px;
-      transition: 0.3s;
-      text-align: left;
-    }
-
-    .step:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(34,197,94,0.3);
-    }
-
-    .step h4 {
-      color: var(--green);
-      margin-bottom: 15px;
-      font-size: 20px;
-    }
-
-    .step p {
-      font-size: 15px;
-      color: #E2E8F0;
-    }
-
-    /* ====== FOOTER ====== */
-    footer {
-      text-align: center;
-      padding: 35px 20px;
-      background-color: var(--blue);
-      margin-top: 60px;
-      font-size: 14px;
-    }
-
-    @media(max-width: 768px) {
-      .developers, .how-it-works {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      nav {
-        flex-direction: column;
-        gap: 15px;
-      }
+    /* RESPONSIVE */
+    @media(max-width:768px) {
+      nav { flex-direction: column; gap:15px; }
+      .hero h1 { font-size:42px; }
+      .hero p { font-size:18px; }
     }
   </style>
 </head>
@@ -236,8 +81,8 @@
 
   <!-- HERO -->
   <section class="hero">
-    <h1>Connect with Top Developers and Get Your Projects Done</h1>
-    <p>Hire expert developers or post your project to receive bids securely. Fast, professional, and reliable.</p>
+    <h1>Connect with Top Developers & Get Your Projects Done Securely</h1>
+    <p>Hire verified developers or post your project to receive bids safely. Fast, professional, and reliable.</p>
     <button>Post a Project</button>
   </section>
 
@@ -272,22 +117,23 @@
     <div class="how-it-works">
       <div class="step">
         <h4>1. Post a Project</h4>
-        <p>Describe your project, set your budget, and post it. Developers will see it instantly.</p>
+        <p>Describe your project and set your budget. Developers will see it instantly.</p>
       </div>
       <div class="step">
         <h4>2. Hire or Receive Bids</h4>
-        <p>Choose a developer directly or let developers bid for your project to find the best fit.</p>
+        <p>Choose a developer directly or let developers bid to find the best fit.</p>
       </div>
       <div class="step">
         <h4>3. Secure Payment & Chat</h4>
-        <p>Payment is held safely, and chat unlocks after hiring so collaboration is secure.</p>
+        <p>Payment is held safely, and chat unlocks after hiring for secure collaboration.</p>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    &copy; 2026 DevBridge. All rights reserved.
+    &copy; 2026 DevBridge. All rights reserved.  
+    <div>Follow us: <a href="#">Twitter</a> | <a href="#">LinkedIn</a> | <a href="#">GitHub</a></div>
   </footer>
 
 </body>
